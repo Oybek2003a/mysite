@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qo‘ng‘izlar Tizimi - Zamonaviy CSS Interaktiv</title>
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <style>
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  
+}
+body{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 1.4;
+	color: #fff;
+	background-color: #1f2029;
+	overflow-x: hidden;
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg');
+  background-position: center;
+  background-repeat: repeat;
+  background-size: 4%;
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 100px;
+  padding-bottom: 300px;
+}
+.sec-center {
+  position: relative;
+  max-width: 100%;
+  text-align: center;
+  z-index: 200;
+}
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked){
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
+.dark-light:checked + label,
+.dark-light:not(:checked) + label{
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  z-index: 20000;
+  display: block;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  cursor: pointer;
+  transition: all 200ms linear;
+  box-shadow: 0 0 25px rgba(255,235,167,.45);
+}
+.dark-light:checked + label{
+  transform: rotate(360deg);
+}
+.dark-light:checked + label:after,
+.dark-light:not(:checked) + label:after{
+  position: absolute;
+  content: '';
+  top: 1px;
+  left: 1px;
+  overflow: hidden;
+  z-index: 2;
+  display: block;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  background-color: #102770;
+  background-image: url('https://assets.codepen.io/1462889/moon.svg');
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 200ms linear;
+  opacity: 0;
+}
+.dark-light:checked + label:after {
+  opacity: 1;
+}
+.dark-light:checked + label:before,
+.dark-light:not(:checked) + label:before{
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1;
+  display: block;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  background-color: #48dbfb;
+  background-image: url('https://assets.codepen.io/1462889/sun.svg');
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 200ms linear;
+}
+.dark-light:checked + label:before{
+  background-color: #000;
+}
+.light-back{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: #fff;
+  overflow: hidden;
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg');
+  background-position: center;
+  background-repeat: repeat;
+  background-size: 4%;
+  height: 100%;
+  width: 100%;
+  transition: all 200ms linear;
+  opacity: 0;
+}
+.dark-light:checked ~ .light-back{
+  opacity: 1;
+}
+.dropdown:checked + label,
+.dropdown:not(:checked) + label{
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 2;
+  height: 50px;
+  transition: all 200ms linear;
+  border-radius: 4px;
+  width: 220px;
+  letter-spacing: 1px;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  text-align: center;
+  border: none;
+  background-color: #ffeba7;
+  cursor: pointer;
+  color: #102770;
+  box-shadow: 0 12px 35px 0 rgba(255,235,167,.15);
+}
+.dark-light:checked ~ .sec-center .for-dropdown{
+  background-color: #102770;
+  color: #ffeba7;
+  box-shadow: 0 12px 35px 0 rgba(16,39,112,.25);
+}
+.dropdown:checked + label:before,
+.dropdown:not(:checked) + label:before{
+  position: fixed;
+  top: 0;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  cursor: auto;
+  pointer-events: none;
+}
+.dropdown:checked + label:before{
+  pointer-events: auto;
+}
+.dropdown:not(:checked) + label .uil {
+  font-size: 24px;
+  margin-left: 10px;
+  transition: transform 200ms linear;
+}
+.dropdown:checked + label .uil {
+  transform: rotate(180deg);
+  font-size: 24px;
+  margin-left: 10px;
+  transition: transform 200ms linear;
+}
+.section-dropdown {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  max-height: 70vh;
+  overflow-y: auto;
+
+  /* padding-bottom’ni olib tashlaymiz: */
+  padding: 5px;    
+  /* va scroll maydoniga padding-bottom kiritish uchun content-box: */
+  box-sizing: content-box;
+
+  background-color: #111;
+  border-radius: 4px;
+  box-shadow: 0 14px 35px rgba(9,9,12,0.4);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: all 200ms linear;
+}
+
+
+.dark-light:checked ~ .sec-center .section-dropdown {
+  background-color: #fff;
+  box-shadow: 0 14px 35px 0 rgba(9,9,12,0.15);
+}
+
+.dropdown:checked ~ .section-dropdown{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.section-dropdown:before {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  content: '';
+  display: block;
+  z-index: 9999;
+}
+.section-dropdown:after {
+  position: absolute;
+  top: -7px;
+  left: 30px;
+  width: 1px; 
+  height: 30px; 
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent; 
+  border-bottom: 8px solid #111;
+  content: '';
+  display: block;
+  z-index: 9999;
+  transition: all 200ms linear;
+}
+.dark-light:checked ~ .sec-center .section-dropdown:after {
+  border-bottom: 8px solid #fff;
+}
+
+a {
+  position: relative;
+  color: #fff;
+  transition: all 200ms linear;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  border-radius: 2px;
+  padding: 5px 0;
+  padding-left: 20px;
+  padding-right: 15px;
+  margin: 2px 0;
+  text-align: left;
+  text-decoration: none;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  justify-content: space-between;
+    -ms-flex-pack: distribute;
+}
+.dark-light:checked ~ .sec-center .section-dropdown a {
+  color: #102770;
+}
+a:hover {
+  color: #102770;
+  background-color: #ffeba7;
+}
+.dark-light:checked ~ .sec-center .section-dropdown a:hover {
+  color: #ffeba7;
+  background-color: #102770;
+}
+a .uil {
+  font-size: 22px;
+}
+.dropdown-sub:checked + label,
+.dropdown-sub:not(:checked) + label{
+  position: relative;
+  color: #fff;
+  transition: all 200ms linear;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  border-radius: 2px;
+  padding: 5px 0;
+  padding-left: 20px;
+  padding-right: 15px;
+  text-align: left;
+  text-decoration: none;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  justify-content: space-between;
+    -ms-flex-pack: distribute;
+    cursor: pointer;
+}
+.dropdown-sub:checked + label .uil,
+.dropdown-sub:not(:checked) + label .uil{
+  font-size: 22px;
+}
+.dropdown-sub:not(:checked) + label .uil {
+  transition: transform 200ms linear;
+}
+.dropdown-sub:checked + label .uil {
+  transform: rotate(135deg);
+  transition: transform 200ms linear;
+}
+.dropdown-sub:checked + label:hover,
+.dropdown-sub:not(:checked) + label:hover{
+  color: #102770;
+  background-color: #ffeba7;
+}
+.dark-light:checked ~ .sec-center .section-dropdown .for-dropdown-sub{
+  color: #102770;
+}
+.dark-light:checked ~ .sec-center .section-dropdown .for-dropdown-sub:hover{
+  color: #ffeba7;
+  background-color: #102770;
+}
+
+.section-dropdown-sub {
+  position: relative;
+  display: block;
+  width: 100%;
+  pointer-events: none;
+  opacity: 0;
+  max-height: 0;
+  padding-left: 10px;
+  padding-right: 3px;
+  overflow: hidden;
+  transition: all 200ms linear;
+}
+.dropdown-sub:checked ~ .section-dropdown-sub{
+  pointer-events: auto;
+  opacity: 1;
+  overflow: visible;
+  max-height: 999px;
+}
+.section-dropdown-sub a {
+  font-size: 14px;
+}
+.section-dropdown-sub a .uil {
+  font-size: 20px;
+}
+/* Har bir ochilgan sub-dropdown oxirida 30px bo‘shliq qo‘shamiz */
+.section-dropdown-sub::after {
+  content: "";
+  display: block;
+  
+  height: 30px;    /* xohlagan bo‘shliq balandligini sozlang */
+}
+
+.logo {
+	position: fixed;
+	top: 50px;
+	left: 40px;
+	display: block;
+	z-index: 11000000;
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+	transition: all 250ms linear;
+}
+.logo:hover {
+  background-color: transparent;
+}
+.logo img {
+	height: 26px;
+	width: auto;
+	display: block;
+  transition: all 200ms linear;
+}
+.dark-light:checked ~ .logo img{
+  filter: brightness(10%);
+}
+
+@media screen and (max-width: 991px) {
+.logo {
+	top: 30px;
+	left: 20px;
+}
+.dark-light:checked + label,
+.dark-light:not(:checked) + label{
+  top: 20px;
+  right: 20px;
+}
+}
+.info-box h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.info-box ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.info-box li {
+  margin-bottom: 6px;
+}
+.dark-light:checked ~ .sec-center .info-box {
+  background-color: transparent;
+  color: #102770;
+}
+/* Light mode specific style for h2 */
+.dark-light:checked ~ .sec-center .info-box h2 {
+  color: #102770;
+}
+  </style>
+</head>
+<body>
+  <input type="checkbox" id="dark-light" class="dark-light" />
+  <label for="dark-light"></label>
+  <div class="light-back"></div>
+
+  <div class="sec-center">
+    <!-- Dropdowns as before -->
+    <input type="checkbox" id="dropdown" class="dropdown" />
+    <label for="dropdown" class="for-dropdown">Oila: Carabidae <i class="uil uil-arrow-down"></i></label>
+    <div class="section-dropdown">
+        <div>
+            <input type="checkbox" id="nebriinae-sub" class="dropdown-sub" />
+            <label for="nebriinae-sub" class="for-dropdown-sub">Sub oila: Nebriinae Laporte, 1834 [G:3, S:7] <i class="uil uil-plus"></i></label>
+            <div class="section-dropdown-sub">
+                <a href="#" data-genus="1">Urug‘: Leistus Frölich, 1799 [S:3]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="2">Urug‘: Nebría Latreille, 1802 [S:2]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="3">Urug‘: Notiophilus Duméril, 1806 [S:2]<i class='bx bx-chevron-right'></i></a>
+            </div>
+        </div>
+        <div>
+            <input type="checkbox" id="cicindelinae-sub" class="dropdown-sub" />
+            <label for="cicindelinae-sub" class="for-dropdown-sub">Sub oila: Cicindelinae Latreille, 1802 [G:6 , S:19 ]<i class="uil uil-plus"></i></label>
+            <div class="section-dropdown-sub">
+                <a href="#" data-genus="4">Urug‘: Calomera Motschulsky, 1862b [S:3]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="5">Urug‘: Cephalota Dokhtouroff, 1883b [S:3]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="6">Urug‘: Cicindela Linné, 1758 [S:4]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="7">Urug‘: Cylindera Westwood, 1831 [S:6]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="8">Urug‘: Myriochila Motschulsky, 1858d [S:2]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="9">Urug‘: Megacephala Latreille, 1802 [S:1]<i class='bx bx-chevron-right'></i></a>
+            </div>
+        </div>
+        <div>
+            <input type="checkbox" id="scaritinae-sub" class="dropdown-sub" />
+            <label for="scaritinae-sub" class="for-dropdown-sub">Sub oila: Carabinae Latreille, 1802 [G:2, S:24]<i class="uil uil-plus"></i></label>
+            <div class="section-dropdown-sub">
+                <a href="#" data-genus="10">Urug‘: Calosoma Weber, 1801 [S:7]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="11">Urug‘: Carabus Linné, 1758 [S:17]<i class='bx bx-chevron-right'></i></a>
+            </div>
+        </div>
+        <div>
+            <input type="checkbox" id="1-sub" class="dropdown-sub" />
+            <label for="1-sub" class="for-dropdown-sub">Sub oila: Omophroninae Bonelli, 1810 [G:1, S:1]<i class="uil uil-plus"></i></label>
+            <div class="section-dropdown-sub">
+                <a href="#" data-genus="12">Urug‘: Omophron Latreille, 1802 [S:1]<i class='bx bx-chevron-right'></i></a>
+            </div>
+        </div>
+        <div>
+            <input type="checkbox" id="2-sub" class="dropdown-sub" />
+            <label for="2-sub" class="for-dropdown-sub">Sub oila: Paussinae Latreille, 1807 [G:1, S:1]<i class="uil uil-plus"></i></label>
+            <div class="section-dropdown-sub">
+                <a href="#" data-genus="13">Urug‘: Pseudozaena Laporte, 1834a [S:1]<i class='bx bx-chevron-right'></i></a>
+            </div>
+        </div>
+        <div>
+            <input type="checkbox" id="3-sub" class="dropdown-sub" />
+            <label for="3-sub" class="for-dropdown-sub">Sub oila: Brachininae Bonelli, 1810 [G:2, S:23]<i class="uil uil-plus"></i></label>
+            <div class="section-dropdown-sub">
+                <a href="#" data-genus="14">Urug‘: Brachinus Weber, 1801 [S:22]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="15">Urug‘: Mastax Fischer von Waldheim, 1828 [S:1]<i class='bx bx-chevron-right'></i></a>
+            </div>
+        </div>
+        <div>
+            <input type="checkbox" id="4-sub" class="dropdown-sub" />
+            <label for="4-sub" class="for-dropdown-sub">Sub oila: Brachininae Bonelli, 1810 [G:2, S:23]<i class="uil uil-plus"></i></label>
+            <div class="section-dropdown-sub">
+                <a href="#" data-genus="16">Urug‘: Dyschirius Bonelli, 1810 [S:16]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="17">Urug‘: Distichus Motschulsky, 1858c [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="18">Urug‘: Scarites Fabricius, 1775 [S:9]<i class='bx bx-chevron-right'></i></a>
+            </div>
+        </div>
+        <div>
+            <input type="checkbox" id="5-sub" class="dropdown-sub" />
+            <label for="5-sub" class="for-dropdown-sub">Sub oila: Melaenidae Alluaud, 1934 [G:1, S:1]<i class="uil uil-plus"></i></label>
+            <div class="section-dropdown-sub">
+                <a href="#" data-genus="19">Urug‘: Cymbionotum Baudi di Selve, 1864 [S:1]<i class='bx bx-chevron-right'></i></a>
+            </div>
+        </div>
+        <div>
+            <input type="checkbox" id="6-sub" class="dropdown-sub" />
+            <label for="6-sub" class="for-dropdown-sub">Sub oila: Broscinae Hope, 1838 [G:2, S:2]<i class="uil uil-plus"></i></label>
+            <div class="section-dropdown-sub">
+                <a href="#" data-genus="20">Urug‘: Broscus Panzer, 1813 [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="21">Urug‘: Craspedonotus Schaum, 1863b [S:1]<i class='bx bx-chevron-right'></i></a>
+            </div>
+        </div>
+        <div>
+            <input type="checkbox" id="7-sub" class="dropdown-sub" />
+            <label for="7-sub" class="for-dropdown-sub">Sub oila: Apotominae LeConte, 1853 [G:1, S:1]<i class="uil uil-plus"></i></label>
+            <div class="section-dropdown-sub">
+                <a href="#" data-genus="22">Urug‘: Apotomus Illiger, 1807b [S:1]<i class='bx bx-chevron-right'></i></a>
+            </div>
+        </div>
+        <div>
+            <input type="checkbox" id="8-sub" class="dropdown-sub" />
+            <label for="8-sub" class="for-dropdown-sub">Sub oila: Trechinae Bonelli, 1810 [G:10, S:89]<i class="uil uil-plus"></i></label>
+            <div class="section-dropdown-sub">
+                <a href="#" data-genus="23">Urug‘: Asaphidion Gozis, 1886 [S:2]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="24">Urug‘: Bembidion Latreille, 1802 [S:63]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="25">Urug‘: Tachys Dejean, 1821 [S:11]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="26">Urug‘: Tachyta Kirby, 1837 [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="27">Urug‘: Tachyura Motschulsky, 1862b [S:4]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="28">Urug‘: Pogonus Dejean, 1821 [S:3]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="29">Urug‘: Neoblemus Jeannel, 1923a [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="30">Urug‘: Perileptus Schaum, 1860c [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="31">Urug‘: Oroblemites Uéno & Pawlowski, 1981 [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="32">Urug‘: Trechus Oairville, 1806 [S:2]<i class='bx bx-chevron-right'></i></a>
+            </div>
+        </div>
+        <div>
+            <input type="checkbox" id="9-sub" class="dropdown-sub" />
+            <label for="9-sub" class="for-dropdown-sub">Sub oila: Harpalinae Bonelli, 1810 [G:56, S:260]<i class="uil uil-plus"></i></label>
+            <div class="section-dropdown-sub">
+                <a href="#" data-genus="33">Urug‘: Callistus Bonelli, 1810 [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="34">Urug‘: Chlaenius Bonelli, 1810 [S:15]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="35">Urug‘: Mnuphorus Chaudoir, 1873a [S:5]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="36">Urug‘: Amblystomus Erichson, 1837 [S:3]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="37">Urug‘: Anisodactylus Dejean, 1829a [S:2]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="38">Urug‘: Carenochyrus Solsky, 1874 [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="39">Urug‘: Chilotomus Chaudoir, 1842b [S:3]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="40">Urug‘: Ditomus Bonelli, 1810 [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="41">Urug‘: Dixus Billberg, 1820 [S:2]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="42">Urug‘: Eocarterus Stichel, 1923 [S:3]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="43">Urug‘: Liochirus Tschitschérine, 1897b [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="44">Urug‘: Machozetus Chaudoir, 1850c [S:2]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="45">Urug‘: Acinopus Dejean, 1821 [S:2]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="46">Urug‘: Bleusea Bedel, 1897c [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="47">Urug‘: Daptus Fischer von Waldheim, 1823 [S:2]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="48">Urug‘: Harpalus Latreille, 1802 [S:22]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="49">Urug‘: Microderes Faldermann, 1836a [S:8]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="50">Urug‘: Ophonus Dejean, 1821 [S:4]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="51">Urug‘: Acupalpm Latreille, 1829 [S:4]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="52">Urug‘: Anthracus Motschulsky, 1850a [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="53">Urug‘: Dicheirotrichus Jacquelin du Val, 1857a [S:7]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="54">Urug‘: Idiomelas Tschitschérine, 1900e [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="55">Urug‘: Loxoncus Schmidt-Göbel, 1846 [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="56">Urug‘: Stenolophus Dejean, 1821 [S:6]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="57">Urug‘: Agatus Motschulsky, 1845a [S:4]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="58">Urug‘: Glycia Chaudoir, 1842a [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="59">Urug‘: Merizomena Chaudoir, 1872a [S:3]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="60">Urug‘: Platytarus Fairmaire, 1850b [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="61">Urug‘: Cymindis Latreille, 1806 [S:20]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="62">Urug‘: Microlestes Schmidt-Göbel, 1846 [S:8]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="63">Urug‘: Philorhizus Hope, 1838 [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="64">Urug‘: Daer Semenov & Znojko, 1929b [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="65">Urug‘: Lebia Latreille, 1802 [S:10]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="66">Urug‘: Apristus Chaudoir, 1846a [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="67">Urug‘: Metablus Jedlička, 1958a [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="68">Urug‘: Syntomus Hope, 1838 [S:2]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="69">Urug‘: Diplocheila Brullé, 1834a [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="70">Urug‘: Badister Clairville, 1806 [S:4]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="71">Urug‘: Licinus Latreille, 1802 [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="72">Urug‘: Panagaeus Latreille, 1802 [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="73">Urug‘: Agonum Bonelli, 1810 [S:2]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="74">Urug‘: Anchomenus Bonelli, 1810 [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="75">Urug‘: Platynus Bonelli, 1810 [S:2]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="76">Urug‘: Poecilus Bonelli, 1810 [S:17]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="77">Urug‘: Pterostichus Bonelli, 1810 [S:10]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="78">Urug‘: Platyderus Stephens, 1827 [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="79">Urug‘: Calathus Bonelli, 1810 [S:2]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="80">Urug‘: Dolichus Bonelli, 1810 [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="81">Urug‘: Eremosphodrus Semenov, 1909a [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="82">Urug‘: Laemostenus Bon elli, 1810 [S:8]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="83">Urug‘: Pseudotaphoxenus Schaufuss, 1865 [S:12]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="84">Urug‘: Taphoxenus Motschulsky, 1850a [S:1]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="85">Urug‘: Synuchus Gyllenhal, 1810 [S:2]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="86">Urug‘: Amara Bonelli, 1810 [S:39]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="87">Urug‘: Zabrus Clairville, 1806 [S:2]<i class='bx bx-chevron-right'></i></a>
+                <a href="#" data-genus="88">Urug‘: Polistichus Bonelli, 1810 [S:1]<i class='bx bx-chevron-right'></i></a>
+            </div>
+            
+        </div>
+    </div>
+
+    <div style="margin-top: 250px;" class="info-box" id="info-box">
+      <h2>Tur</h2>
+      <div id="info-content">Urug‘ tanlangacha hech qanday ma’lumot yo‘q.</div>
+    </div>
+  </div>
+  <script>
+  const speciesData = {
+    '1': [
+      'Latreille ferganensis Semenov, 1928: 212 A: UZ',
+      'Latreille relictus Semenov, 1900f: 679 A: UZ',
+      'Latreille zarudnyi zarudnyi Semenov, 1928: 209 A: UZ'
+    ],
+    '2': [
+      'Nebría limbigera limbigera Solsky, 1874: 12 A: KA KI KZ SCH UP UZ',
+      'Nebría psammophila Solsky, 1874: 12 A: KA KI KZ NP TD UZ'
+    ],
+    '3': [
+      'Notiophilus sublaevis hiemalis Semenov & Arnoldi, 1937: 222 A: AF TD TM UZ',
+      'Notiophilus sublaevis sublaevis Solsky, 1873: 301 A: UZ'
+    ],
+    '4': [
+      'Calomera fischeri elongatesignata W. Horn, 1922a: 21 (Cicindela) A: AE AF IN IQ KIKZ OM PA TD TM UZ',
+      'Calomera littoralis conjunctaepustulata Dokhtouroff, 1887b: 438 (Cicindela) E: AB CT GG KZ ST UK A: AF IN KI KZ MG PA TD UZ WS',
+      'Calomera sturmi Ménétriés, 1832: 95 (Cicindela) E: AB ST A: AF IN KI KZ TD TM UZ XIN'
+    ],
+    '5': [
+      'Cephalota deserticola Faldermann, 1836b: 355 {Cicindela) E: AR AB KZ ST UK A: AF IN KI KZ MG TD TM TR UZ XIN',
+      'Cephalota galathea Thieme, 1881: 97 {Cicindela) A: TD UZ',
+      'Cephalota  schrenkii Gebler, 1841a: 370 {Cicindela) A: AF IN KZ NW TM UZ'
+    ],
+    '6': [
+      'Cicindela IRITLALSLTLUMAMCMDNLNRNTPLPTROSKSLSPSVSZTRYU N:AGMO A:ESINKIKZ UZWS',
+      'Cicindela clypeata clypeata Fischer von Waldheim, 1821a: 9 E: ST A: AF IN KZ TD TM UZ',
+      'Cicindela granulata granulata Gebler, 1843: 36 A: KI KZ TD UZ XIN',
+      'Cicindela turkestanica turkestanica Ballion, 1871: 322 A: KIKZ TM TD UZ'
+    ],
+    '7': [
+      'Cylindera dokhtourowi V.E. Jakovlev, 1884: pi. xi (Cicindela) A: KZ MG TD UZ',
+      'Cylindera nox Semenov, 1897d: 238 (Cicindela) A: AF IN KZ TD TM UZ',
+      'Cylindera obliquefasciata descendens Fischer von Waldheim, 1828: 35 (Cicindela) A: AF IN KA KI KZ MG PA TD TM UZ WS',
+      'Cylindera contorta contorta Fischer von Waldheim, 1828: 30 (Cicindela) E: AB GG KZ MD RO ST TR UK A: AF IN KZ MG NW TD TM TR UZ WS',
+      'Cylindera  inscripta Zoubkoff, 1833: 311 (Cicindela) E: AB ST A: IN ΚΙ KZ NW TM UZ',
+      'Cylindera litterifera Chaudoir, 1842a: 801 (Cicindela) E: AB AR KZ ST (Kavkaz) A: AF IN ΚΙ KZ TD TM UZ XIN'
+    ],
+    '8': [
+      'Myriochila orientalis Dejean, 1825: 93 {Cicindela) E: AB AR GG ST A: IN IQ ΚΙ KZ TD TR TM UZ SY XIN',
+      'Myriochila EG LB MOTU A: AE AF BA CY IN IQ IS JO KI KU KZ LE OM PA SA SI SY TD TM TR UP UZ XIN YE AFR ORR'
+    ],
+    '9': [
+      'Megacephala euphratica armenica Laporte, 1834b: 28 E: AB AR GG A: AF IN KZ PA TD TM UZ'
+    ],
+    '10': [
+      'Calosoma glasunowi Semenov, 1900d: 303 A: UZ',
+      'Calosoma kuschakewitschi kuschakewitschi Ballion, 1871: 323 (Callisthenes) A: KZUZ',
+      'Calosoma usgentense usgentense Solsky, 1874: 20 (Callisthenes) A: KI UZ',
+      'Calosoma LALT MC MDNL PL PTRO SKSL SP ST SV SZ TRUK YU N: MO TU A: CYINKIKZ SYTM TRUZ WS XIN NARi',
+      'Calosoma denticolle Gebler, 1833: 274 E: AB AR BU CT FIMD NT RO ST TR UK A: ES HEB HEI KZ MG NIN NMO TM UZ WS XIN',
+      'Calosoma olivieri Dejean, 1831a: 559 E: AZ MA N: AG CI EG LB MO TU A: IN IQ JO PA SA SY TM UZ',
+      'Calosoma imbricatum deserticola Semenov, 1897d: 242 E: ST A: KZ TM UZ WS'
+    ],
+    '11': [
+      'Carabus fedtschenkoifedtschenkoi Solsky, 1874: 14 A: TD UZ',
+      'Carabus medvedevi dzhebaglicus Gottwald, 1989: 283 A: KZ UZ',
+      'Carabus medvedevi medvedevi Kryzhanovskij, 1968a: 162 A: KI UZ',
+      'Carabus turcosinensis Mandl, 1955a: 255 A: KZ UZ',
+      'Carabus aulacocnemus martynovi Semenov & Znojko, 1932: 39 A: KI KZ (Tianshan) UZ',
+      'Carabus aulacocnemus pseudokaratavensis Deuve & Kaláb, 1993a: 23 A: UZ',
+      'Carabus aulacocnemus uzbek Deuve & Kaláb, 1992a: 9 A: UZ',
+      'Carabus brosciformis Semenov, 1897a: 220 A: UZ',
+      'Carabus namanganensis namanganensis Heyden, 1886a: 89 [RN] A: KI KZ (Tianshan) UZ',
+      'Carabus namanganensis sidzhakensis Deuve, 1991b: 4 A: UZ',
+      'Carabus pskemicus Deuve & Kaláb, 1993b: 77 A: UZ',
+      'Carabus zarudnyi Semenov & Znojko, 1932: 37 A: UZ',
+      'Carabus staudingeri Ganglbauer, 1886a: 183 A:TDUZ',
+      'Carabus clathratus clathratus Linné, 1761: 218 E: BE BY CT DE EN FI FR GB GE IR LA LT LU NL NR NT PL ST SV UK A: ES KI KZ MG UZ WS',
+      'Carabus brachypedilus brachypedilus A. Morawitz, 1886: 61 A: KI UZ',
+      'Carabus longipedatus Belousov & Kabak, 1993c: 374 A: KI UZ',
+      'Carabus erosus auliensis Lapouge, 1918: 92 A: KI KZ (Tianshan) UZ'
+    ],
+    '12': [
+      'Omophron rotundatum Ghaudoir, 1852: 101 E: AB A: AF HP IN IQ IS KZ PA SY TD TM TRUZ XIN'
+    ],
+    '13': [
+      'Pseudozaena turcicus I. Frivaldszky von Frivald, 1835: 263 E: AB AR BU GG GR MC TR A: IN IS JO ΚΙ KZ LE SY TD TM UZ'
+    ],
+    '14': [
+      'Brachinus tianshanicus aktashiensis Kirschenhofer, 1986: 330 A: UZ (W Talassky, Karzhantau Khr.)',
+      'Brachinus tianshanicus tashkenticus Kirschenhofer, 1986: 328 A: UZ (W Chatkalsky; Kuraminsky Khr.)',
+      'Brachinus tianshanicus tianshanicus Mikhailov, 1976b: 385 A: UZ (valleys of Pskem and Ugam riv.)',
+      'Brachinus  HU IT IR LA LT LU MD NL NR NT PL PT RO SK SL SP ST SV SZ TR UK YU A: CY IN IQ KI KZ SY TD TM TRUZWS',
+      'Brachinus ejaculans Fischer von Waldheim, 1828: 105 E: ABALAR BHBUCRGGGR HUMDRO STTR UK YU A: AF IN IQ KI KZ SY TD TM TR UZ',
+      'Brachinus psophia Audinet-Serville, 1821: 8 E: AB AL AR BH BU CR CZ FR GG GR HU IT MD RO SK ST TR UK YU °N: AG A: IN IQ KI KZ SY TD TM TR UZ WS',
+      'Brachinus bodemeyeri Apfelbeck, 1904: 352 E: AB AL AR BU FR GG GR PT SP ST TR UK N: AG MO A: IN IQ KI SY TD TM TR UZ',
+      'Brachinus  brevicollis Motschulsky, 1844: 67 E: AB AL AR BH CR GG GR IT MD ST TR UK A: AF IQ KI KZ SY TD TM TR UZ',
+      'Brachinus constrictus Reitter, 1919: 139 A: UZ',
+      'Brachinus dilatipennis Reitter, 1919: 139 A: LE UZ',
+      'Brachinus explodens Duftschmid, 1812: 234 E: AB AL AR AU BE BH BU BY CR CT CZ EN FR GE GG GR HU IT LA LT LU MD NL NT PL PT RO SK SL SP ST TR UK YU A: IN IQ IS ΚΙ KZ SY TD TM TR UZ WS',
+      'Brachinus bayardi Dejean, 1831a: 431 E: AB AR BU GG GR IT ST TR A: AF IN IS ΚΙ KZ SY TD TM TR UZ',
+      'Brachinus bipustulatus Quensel, 1806: 231 E: AB AL AR BU GG GR HU MD SK ST TR UK YU A: KI KZ TD TM TR UZ',
+      'Brachinus cruciatus Quensel, 1806:231 E:ABARCTGGST A: IN KI KZ TD TM TR UZ',
+      'Brachinus exhalans P. Rossi, 1792: 84 {Carabus) E: AB AL AR FR GG GR IT SP ST TR N: AG MO TU A: IN IQ IS KI KZ LE SA SY TD TM TR UZ',
+      'Brachinus hamatus Fischer von Waldheim, 1828: 109 E: AB AR GG ST A: ES KI KZ MG TD TM TR UZ WS',
+      'Brachinus quadriguttatus quadriguttatus Gebler, 1829: 29 E: AB GG ST A: KI KZ TD TM UZ',
+      'Brachinus atripensis Ballion, 1871: 324 E: AB AR A: AF KI KZ TD TM UZ',
+      'Brachinus costatulus Quensel, 1806: 231 E: AB AR GG ST A: KI KZ TD TM UZ',
+      'Brachinus lewecki Liebke, 1928a: 11 A: UZ',
+      'Brachinus nigricornis Gebler, 1829: 29 E: AB AL AR BU FR GG GR HU IT SK SP ST TR UK A: KIKZ TD TR UZ WS',
+      'Brachinus turkestanicus Liebke, 1928a: 17 A: UZ'
+    ],
+    '15': [
+      'Mastax thermarum thermarum Steven, 1806: 166 (Brachinus) E: AB AR BU GG GRRO ST A: ES KI KZ TD TM UZ'
+    ],
+    '16': [
+      'Dyschirius apicalis Putzeys, 1846c: 556 E: AB AL BH BU CR FR GR IT MD RO SP ST TR UK A: TR WS',
+      'Dyschirius auriculatus auriculatus Wollaston, 1867: 7 E: BH CR IT SP ST TR UK YU N: AG CI EG MO TU A: AF CY IN IQ KZ SA SI TM TR UZ',
+      'Dyschirius cylindricus hauseri A. Fleischer, 1898c: 249 E: AU BU CT GR HU IT KZ MD RO TR UK A: ES IN KZ TM UZ',
+      'Dyschirius nitidus chivensis Fedorenko, 1992: 97 A: IN KI KZ TM UZ',
+      'Dyschirius nitidus nitidus Dejean, 1825: 421 (Clivina) E: AU BE BU CZ FI FR GB GE GR IT LA MA MD NL PL RO SK ST SZ TR UK YU N: AG A: FE KZ MG UZ',
+      'Dyschirius politus meridianus Fedorenko, 1992: 103 A: KZ TM UZ',
+      'Dyschirius AGE GLB MO TU A: ES IN IQ KI KZ MG SA SY TM TR UZ WP WS',
+      'Dyschirius fulgidus Motschulsky, 1850a: 18 A: KI KZ UZ',
+      'Dyschirius humeratus Chaudoir, 1850b: 192 E: RO ST UK A: AF KZ TD TM TR UZ',
+      'Dyschirius obscurus Gyllenhal, 1827: 456 (Clivina) E: AU BE DE EN FI FR GB GE GG IR LA NL NR NT PL ST SV UK A: ES KZ TM UZ WS',
+      'Dyschirius zimini Znojko, 1928: 203 E: AB ST A: TM TR UZ',
+      'Dyschirius arnoldii Gryuntal, 1984a: 290 A: KI KZ TD TM UZ',
+      'Dyschirius dimidiatus dimidiatus Chaudoir, 1846a: 70 E: AB GG ST A: UZ',
+      'Dyschirius impressifrons Fedorenko, 1993a: 360 E: KZ A: UZ',
+      'Dyschirius syriacus Putzeys, 1866a: 87 E: AB N: EG A: IN JO KZ MG SI SY TM UZ',
+      'Dyschirius kryzhanovskii Gryuntal, 1984a: 289 A: TD TM UZ'
+    ],
+    '17': [
+      'Distichus planus Bonelli, 1813: 470 (Scarites) E: AB FR GG GR IT MA PT SP TR N: EG MO TU A: IN IQ JO KZ PA SA SY TD TM TR UZ YE'
+    ],
+    '18': [
+      'Scarites terricolapersicus Chaudoir, 1842a: 813 E: AB GG A: AF IN PA TM UZ',
+      'Scarites terricola terricola Bonelli, 1813: 471 E: AU AZ BU FR GR HU IT MD RO SP TR YU N: AG EG LB MO TU A: FUJ HEI IN IQ KI KZ MG PA SHG TD TM TR UZ',
+      'Scarites basiplicatus Heyden, 1884c: 229 A: KZ UZ',
+      'Scarites bucida Pallas, 1776: 707 (Carabus) E: ST A: IN KZ TM UZ',
+      'Scarites turkestanicus Heyden, 1884b: 219 A: TM UZ',
+      'Scarites angustus Chaudoir, 1855: 48 (Taeniolobus) A: IN KZ TD TM UZ',
+      'Scarites cylindronotus Faldermann, 1836b: 363 A: IN KI KZ PA SW TD TM UZ',
+      'Scarites procerus eurytus Fischer von Waldheim, 1828: 119 E: AZ GG GR IT SP ST TR N: AG EG LB MO TU A: AF IN IQ KI KZ PA SA SY TM TR UZ',
+      'Scarites salinus Dejean, 1825: 385 E: AB GG A: IN KZ NW PA SY TM UZ'
+    ],
+    '19': [
+      'Cymbionotum semelederi Chaudoir, 1861a: 6 (Graniger) E: AR GG ST N: AG TU A: AF CY IQ SA SY TR UZ YE'
+    ],
+    '20': [
+      'Broscus karelini Zoubkoff, 1837: 65 E: AB A: İN TM UZ'
+    ],
+    '21': [
+      'Craspedonotus margellanicus Kraatz, 1884c: 229 A: TD TM UZ'
+    ],
+    '22': [
+      'Apotomus rufithorax Pecchioli, 1837: 445 E: AB AL AR FR (Corse) GR IT PT SP ST N: AG MO TU A: CY IN IQ IS TR SY TM UZ'
+    ],
+    '23': [
+      'Asaphidion flovicorne Solsky, 1874: 112 {Tachypus) E: AR BU GR A: CY IN ΚΙ KZ TD TR UZ',
+      'Asaphidion transcaspicum Semenov, 1889d: 354 {Tachypus) E: AB GG A: ES KI KZ TD TM UZ XIN'
+    ],
+    '24': [
+      "Bembidion amnicola J.R. Sahlberg, 1900d: 177 E: AB GG A: KZ TM UZ",
+      "Bembidion pamiricolapamiricola Lutshnik, 1930: 34 A: KA KI KZ TD UZ",
+      "Bembidion ustum Quensel, 1806: 221 (Carabus) E: AB GG ST UK A: KZ TM UZ",
+      "Bembidion quadripustulatum quadripustulatum Audinet-Serville, 1821: 80 E: AB AR AU BE BH BY CR CT CZ FR GB GE GG GR HU IT LA LT LU MC MD NL PL PT RO SK SL SP ST SV SZ UK YU A: CY ES FE IQ IS KI KZ NMO TD TM TR UZ WS",
+      "Bembidion bactrianum K. Daniel, 1902a: 35 A: TD UZ",
+      "Bembidion ferghanicum ferghanicum Müller-Motzfeld & Kryshanovskij, 1983: 76 A: KI TD UZ",
+      "Bembidion peliopterum Chaudoir, 1850b: 182 E: AB AR ST UK A: AF IN KI KZ TD TM TR UZ",
+      "Bembidion piceocyaneumpiceocyaneum Solsky, 1874: 124 E: AR A: AF KI TD UZ XIN",
+      "Bembidion almum almum J.R. Sahlberg, 1900d: 174 E: AB GG A: AF KI KZ TM UZ",
+      "Bembidion almum protalmum Netolitzky, 1934b: 155 A: ES KI KZ TD UZ",
+      "Bembidion luridicorne luridicorne Solsky, 1874: 117 E: AB GG A: IN IQ KI KZ TD TM UZ",
+      "Bembidion azurescens azurescens Dalla Torre, 1877: 54 E: AB AL AR AU BU BY CT CZ EN FR GE GG GR HU IT LA LT MC MD NT RO SK SL SP ST SV SZ UK YU A: KI TD UZ",
+      "Bembidion latiplaga latiplaga Chaudoir, 1850b: 185 E: AB AR AU BH BU FR GG GR HU IT MD RO SK SP ST UK YU A: IN KZ TM UZ",
+      "Bembidion quadriplagiatum Motschulsky, 1844: 250 (Omala) E: AB GG ST A: AF ES IN KI KZ TM UZ WS",
+      "Bembidion tenellum buchariplaga Netolitzky, 1943b: 80 A: TM UZ",
+      "Bembidion tenellum pseudoplaga Netolitzky, 1943b: 80 E: AB AR GG ST A: AF BEI KI KZ MG SCH TAI TM UZ",
+      "Bembidion combustum lugubriveste Netolitzky, 1943b: 124 A: TD UZ",
+      "Bembidion laevibase Reitter, 1902c: 137 (Pogonus) E: AB GG A: KI KZ TD TM UZ",
+      "Bembidion lampros Herbst, 1784: 143 (Carabus) E: AB AL AR AU BE BH BU BY CR CT CZ DE EN FI FR GB GE GG GR HU IR IT LA LT LU MC MD NL NR NT PL PT RO SK SL SP ST SV SZ UK YU N: MO TU A: ES KI KZ TD TR UZ WS",
+      "Bembidion properans Stephens, 1828b: 26 (Tachypus) E: AB AR AU BE BH BU BY CR CT CZ DE EN FI FR GB GE GG GR HU IT LA LT LU MC MD NL NR NT PL PT RO SK SL SP ST SV SZ UK YU A: ES FE IN IQ KI KZ TD TM TR UZ WS",
+      "Bembidion quadricolle Motschulsky, 1844: 270 (Trachypachus) E: AB AR BU GG GR MD SL ST UK YU A: AF IN IQ KZ TD TM TR UZ WS",
+      "Bembidion niloticum niloticum Dejean, 1831a: 73 E: AB AR BU GG GR (Kríti) ST N: EG A: AF AP CY IN IQ KI KZ NP TM TR UP UZ Arabia ORR",
+      "Bembidion varium Olivier, 1795: [35] 110 (Carabus) E: AB AL AR AU BE BH BU BY CR CT CZ DE FI FR GB GE GR HU IR IT LA LT LU MC MD NL NR NT PL PT RO SK SL SP ST SV SZ UK YU N: AG CI EG MO TU A: AF CY ES FE IN IS KI KZ SHG TAI TM TR UZ WS Korea",
+      "Bembidion atlanticum megaspilum Walker, 1871: 10 (Peryphus) E: AB AR BU GG GR MD ST UK N: AG EG MO TU A: CY IN IQ IS KI KZ SA TD TM TR UZ YE"
+    ],
+    '25': [
+      "Tachys bistriatus Duftschmid, 1812: 205 (Elaphrus) E: AB AR AU BE BU BY CT CZ DE EN FI FR GB GE GG GR HU IT LU LT MC NL NR NT PL PT RO SK SP ST SV SZ UK YU N: AG CI EG MO MR TU A: FE IN KZ PA SY TD TM TR UZ",
+      "Tachys centriustatus Reitter, 1894a: 34 E: AB BU GG RO ST UK A: AF KZ NMO TD TM UZ",
+      "Tachys fulvicollis Dejean, 1831a: 39 (Bembidium) E: AB AR BE BU CR CZ FR GE GG HU IT LU MC PT RO SK SP ST SZ UK N: AG A: KZ SY TD TM TR UZ",
+      "Tachys micros Fischer von Waldheim, 1828: 97 (Dromius) E: AB AR AU BE BU BY CR CT CZ FR GB GE GG HU IR IT LU LT MC NL PL PT RO SK SP ST SZ UK YU N: EG MO TU A: AF ES FE HEI IS JA KA KI KZ NC TD TM TR TU UZ WS",
+      "Tachys turkestanicus Csiki, 1928a: 201 [RN] E: AB AR CR CT CZ GG GR HU MC RO SK ST UK A: AF CY IN KI KZ NMO TD TM TR TU UZ XIN",
+      "Tachys angustulus Reitter, 1899c: 195 E: AB AR GG A: AF IN KI KZ TD TM UZ",
+      "Tachys atamuradovi Kryzhanovskij & Mikhailov, 1987: 18 E: AB GG A: KZ TM TD UZ",
+      "Tachys centralis J.R. Sahlberg, 1900d: 178 E: AB GG RO A: KI KZ TD TM UZ",
+      "Tachys lenkoranus Csiki, 1928a: 185 [RN] E: AB AR GG GR ST A: HEN IN KI KZ SY TD TM TR UZ XIN",
+      "Tachys scutellaris Stephens, 1828b: 5 E: AB AR BU FR GB GE GG GR HU IR IT NL PT RO SP ST UK N: AG CI EG MO TU A: IN IS KI KZ PA SI TD TM TR UZ AFR",
+      "Tachys vibex Kopecký, nom. nov. E: AB CT GG MD ST A: AF IN KZ SY TD TM UZ"
+    ],
+    '26': [
+      'Tachyta nana nana Gyllenhal, 1810:30 (Bembidium) E: AB AR AU BE BU BY CT CZ DE EN FI FR GB GE GG HU IT LU LT NL NT NR PL PT RO SE SK SP SV ST UK N: CI MO A: ES FE IN JA KI KZ MG NC SC SCH TD TR UZ ws'
+    ],
+    '27': [
+      'Tachyura decolorata Chaudoir, 1850b: 171 (Tachys) E: AB AR GG A: AF IN KIKZ PA ST SY TD TM TR UZ',
+      'Tachyura diabrachys Kolenati, 1845: 72 (Tachys) E: AB AR BU CZ FR GG GR HU IT MD PL PT RO SK SP ST UK A: CY IN IS KZ LE SY TD TM TR UZ',
+      'Tachyura euphratica Reitter, 1885e: 340 (Tachys) E: AB GG A: IN IQ KI KZ PA SY TD TM TR UZ',
+      'Tachyura tetraspila Solsky, 1874: 114 {Tachys) E: AB GG A: AF IN KIKZ PA SCH SY TD TM TU UP UZ AFR ORR'
+    ],
+    '28': [
+      'Pogonus gilvipes Dejean, 1828: 14 E: FR GR IT MA SP ST UK N: AG CI EG LB MO TU A: IQ SA SY TR UZ YE AFR',
+      'Pogonus orientalis Dejean, 1828: 16 E: BUMD ST A: KZ UZ',
+      'Pogonus vzVeas Ménétriés, 1849a: 30 A: TM UZ'
+    ],
+    '29': [
+      'Neoblemus glazunovi Jeannel, 1935: 273 A: IN ΚΙ KZ TD UZ'
+    ],
+    '30': [
+      'Perileptus mesasiaticus Uéno, 1976b: 68 A: AF Ki KZ SA TD TM UZ'
+    ],
+    '31': [
+      'Oroblemites dromioides Reitter, 1897e: 246 {Trechus) A: KI (W Tien Shan; Alai) KZ UZ'
+    ],
+    '32': [
+      'Trechus quadristriatus Schrank, 1781:218 {Carabus) E: AB AL AR AU BE BH BU BY CR CT CZ DE EN FI FR GB GE GG GR HU IR IT LA LT LU MA MC MD NL NR NT PL PT RO SK SL SP ST SV SZ TR UK YU N: AG EG MO A: AF CY IN IQ IS JO KI KZ LE SY TD TM TR UZ WS XIN NARi2',
+      'Trechus turkestanicus Belousov & Kabak, 1992b: 825 A: UZ (Turkestanskiy Khrebet)'
+    ],
+    '33': [
+      'Callistus lunatus lunatus Fabricius, 1775: 247 (Carabus) E: AB AL AN AR AU BE BH BU BY CR CT CZ FR GB GE GG HU IT KZ LU MC MD NL NR NT PL PT RO SK SL SP ST SV SZ TR UK YU N: MR A: KIKZ TD TM TR UZ ws'
+    ],
+    '34': [
+      "Chlaenius alutaceus Gebler, 1829: 48 E: AB AR BU KZ MD RO ST UK A: ES FE KI KZ IN MG NO TM UZ WS",
+      "Chlaenius flavipes Ménétriés, 1832: 114 E: AB AL AR BH BU CR CT GG GR HU KZ MC MD RO TR UK YU A: AF IQ IN KI TD TM TR UZ",
+      "Chlaenius kindermanni kindermanni Chaudoir, 1856: 271 E: ST UK A: TD UZ",
+      "Chlaenius melampus Ménétriés, 1849a: 29 E: AB GG ST A: ES TD UZ WS",
+      "Chlaenius tenuilimbatus Ballion, 1871: 326 A: AF IN KA KI KZ TD TM UZ",
+      "Chlaenius tristis tristis Schaller, 1783: 318 (Carabus) E: AB AL AN AR AU BE BH BU BY CR CT CZ DE EN FI FR GE GG HU IT KZ LA LT LU MC MD NL NR NT PL SK SL SP ST SV SZ TR UK YU N: MR A: KZ TM TR UZ WS",
+      "Chlaenius spoliatus spoliatus P. Rossi, 1792: 79 (Carabus) E: AB AL AN AR AU BH BU BY CR CT CZ FR GE GG GR HU IT KZ MA MC MD RO SK SL SP ST TR UK YU N: AG CI EG LB MO MR TU A: AF CH CY ES FE IN IQ IS KI KZ LE MG SY TD TM TR UZ WS",
+      "Chlaenius festivus festivus Panzer, 1796a: no. 15 (Carabus) E: AB AL AR AU BH BU BY CR CT CZ FR GG HU IT KZ LT MC MD RO SK SL ST TR UK YU N: EG LB TU A: AF IN IQ SY TD TR UZ WS",
+      "Chlaenius flavicornis Fischer von Waldheim, 1842a: 6 E: KZ A: ES KI KZ TD TM UZ WS",
+      "Chlaenius cruralis Fischer von Waldheim, 1829c: 369 E: AB AL AR BH BU CT GG GR KZ MC MD RO ST TR UK YU A: IN IQ IS JO KZ SY TD TM TR UZ",
+      "Chlaenius viridis Ménétriés, 1832: 115 E: AB AR BH CT GG A: IN KZ TR UZ",
+      "Chlaenius circumscriptus Duftschmid, 1812: 166 (Carabus) E: AB AL AR BH BU CR CT FR GG GR HU IT KZ PT RO SK SP ST TR UK YU N: EG A: KZ TD TM TR UZ",
+      "Chlaenius dostojevskji Tschitschérine, 1895d: 497 E: KZ A: AF IN KA KI TD UZ",
+      "Chlaenius aeneocephalus aeneocephalus Dejean, 1826: 362 E: AB AR BH BU GR HU KZ RO RU TR UK YU A: IN SY TD TM TR UZ",
+      "Chlaenius semicyaneus Solsky, 1874: 65 A: AF KZ NE UZ"
+    ],
+    '35': [
+      'Mnuphorus albomaculatus albomaculatus Ballion, 1871: 325 (Lebia) A: UZ',
+      'Mnuphorus albomaculatus oxianus Glasunov, 1913: 235 A: UZ',
+      'Mnuphorus baeckmanni Semenov, 1926: 44 A: UZ',
+      'Mnuphorus sellatus Gebler, 1843: 36 {Cymindis) A: KZ UZ',
+      'Mnuphorus tetraspilus Solsky, 1874: 44 (Lebia) A: UZ'
+    ],
+    '36': [
+      'Amblystomus levantinus levantinus Reitter, 1883e: 140 E: AB AL AR BU CR GG GR IT MA SP A: CY IS TM TR UZ',
+      'Amblystomus metallescens Dejean, 1829a: 482 {Acupalpus) E: AB AL AR AU BH BU CR FR GG GR HU IT MD PT SP ST UK YU N: AG EG MOTU A: AF IQ IS Ki KZ TD TM TR UZ',
+      'Amblystomus niger Heer, 1841: 563 {Stenolophus) E: AB AL AU BH BU CR FR GG GR HU IT MA MD PT RO SK SP SZ UK N:AGTU A:IQKZTRUZ'
+    ],
+    '37': [
+      'Anisodactylus binotatus Fabricius, 1787:199 {Carabus) E: AB AL AN AR AU BE BH BU BY CR CT CZ DE EN FA FI FR GB GE GR HU IC IR IT KZ LA LS LT LU MA MC MD NL NR PL PT RO SK SL SP ST SV SZ TR UK YU N: AG MO MR A: AF BA CY ES FE Ki KZ SY TD TM TRUZ',
+      'Anisodactylus signatus Panzer, 1796e: no. 4 {Carabus) E: AU BE BY CT CZ DE FI FR GB GE GG GR HU IR IT LU MA MD NL NR PT RO SK SP SV SZ YU A: CH CY IN JA KI KZ MG NC PA SC TD TM UZ'
+    ],
+    '38': [
+      'Carenochyrus titanus Solsky, 1874: 50 A: AF IN KI KZ TD TM UZ'
+    ],
+    '39': [
+      'Chilotomus kuhitangi Kryzhanovskij, 1962b: 543 A: TM UZ',
+      'Chilotomus tschitscherini Semenov, 1903a: 8 A: KI TD UZ',
+      'Chilotomus usgentensis Schauberger, 1932d: 159 A: KI UZ'
+    ],
+    '40': [
+      'Ditomus calydonius oriens Dvořák, 1993: 184 (Carterus) E: AB AR GG ST TR UK A: AF IN IQ IS KI KZ LE SY TD TM UZ'
+    ],
+    '41': [
+      'Dixus eremita Dejean, 1825: 447 (Ditomus) E: AB AL AR BU GR MC MD RO ST TR UK A: CY IN IQ IS JO KI KZ SYTDTMTR UZ',
+      'Dixus semicylindricus Piochard de la Brûlerie, 1872c: 476 (Aristus) E: AB AR ST A: AF IN IQ KI KZ PA TD TM TR UZ XIN'
+    ],
+    '42': [
+      'Eocarterus chodshenticus Ballion, 1871: 326 (Ditomus) A: KI KZ TD UZ',
+      'Eocarterus semenowi Reitter, 1893c: 110 (Odontocarus) A: KZ UZ',
+      'Eocarterus usgentensis Heyden, 1884b: 222 (Sabienus) A: KI TD UZ'
+    ],
+    '43': [
+      'Liochirus cycloderus Solsky, 1874: 78 (Ophonus) A: KI KZ TD TM UZ'
+    ],
+    '44': [
+      'Machozetus concinnus CA. Dohrn, 1885a: 78 A: TD TM UZ',
+      'Machozetus lehmanni Ménétriés, 1848: 25 (Harpactes) A: AF TD TM UZ'
+    ],
+    '45': [
+      'Acinopus laevigatus laevigatus Ménétriés, 1832: 128 E: AB AR BU CR GG GR MD RO ST A: AF GAN IN IQ IS ΚΙ KZ SI TD TM TR UZ ΧΙΝ',
+      'Acinopus striolatus Zoubkoff, 1833: 317 E: AB AR A: KIKZ TD TM UZ XIN'
+    ],
+    '46': [
+      'Bleusea ammophila Tschitschérine, 1898e: 168 A: IN IQ IS KZ TM UZ'
+    ],
+    '47': [
+      'Daptus pictus Fischer von Waldheim, 1823: pl. 46 E: ST A: IN KI KZ UZ TD TM',
+      'Daptus vittatus Fischer von Waldheim, 1823: pl. 46 E: AB AR BU CR CT FR GG GR IT MA PT RO SP ST UK N: AG CI EG LB MO TU A: CY IN IQ IS KI KZ SY TIA TM TR UZ WS XIN XIZ'
+    ],
+    '48': [
+      "Harpalus tenebrosus Dejean, 1829a: 358 E: AB AL AR AU BE BH BU CR FR GB GE GG GR HU IT MC MD PL PT RO SL SP ST SZ TR UK YU N: AG CI EG MO MR TU A: CY IN IS IQ JO KI NW PA SY TD TM TR UZ YE",
+      "Harpalus amplicollis Ménétriés, 1848: 38 [NP] E: AB BU KZ RO ST UK A: BEI ES HEB IN KI KZ LIA MG NC NIN NMO SHX TM UZ WS XIN",
+      "Harpalus caeruleatus Bates, 1878c: 714 E: AB A: KZ MG NIN UZ XIN",
+      "Harpalus calathoides Motschulsky, 1844: 200 E: KZ MD ST UK A: ES KZ TD UZ WS XIN",
+      "Harpalus cyanopterus Tschitschérine, 1897c: 76 {Ophonus} A: KI KZ (Tien Shan) UZ (Tien Shan)",
+      "Harpalus distinguendus distinguendus Duftschmid, 1812: 76 {Carabus} E: AB AL AR AU AZ BE BH BU BY CR CT CZ DE EN FI FR GE GG GR HU IT KZ LA LT LU MC MD NL NR NT PL PT RO SK SL SP ST SV SZ TR UK YU N: AG CI MO MR A: AF CY ES IN IS KI KZ MG SY TD TM TR UZ WS XIN",
+      "Harpalus ferghanensis Tschitschérine, 1899a: 271 A: UZ",
+      "Harpalus froelichii Sturm, 1818: 117 E: AB AU BE BU BY CT CZ DE ES FR GB GE GG HU IT KZ LA LT MD NL PL RO SK SL ST SV SZ UK A: BEI ES FE GAN HEI KI KZ MG NC NIN NMO QIN SHA SHX TM UZ WS XIN",
+      "Harpalus fuscicornis Ménétriés, 1832: 134 E: AB AR AU BU FR GG HU IT MC MD SP ST UK N: AG MO TU A: IQ KI KZ TD TM TR UZ",
+      "Harpalus inexspectatus Kataev, 1989: 226 E: AR HU MD ST UK A: KI KZ TR UZ",
+      "Harpalus kandaharensis Jedlička, 1956a: 195 A: AF TD TM UZ",
+      "Harpalus oodioides Dejean, 1829a: 352 E: ST UK A: KI KZ UZ WS XIN",
+      "Harpalus pseudoserripes Reitter, 1900a: 121 A: AF KI KZ (Tien Shan) TD TM UZ",
+      "Harpalus pterostichus Reitter, 1900a: 66 (Ophonus) A: KI (Chatkalskiy Khrebet) UZ (Chatkalskiy Khrebet)",
+      "Harpalus pulvinatus pulvinatus Ménétriés, 1848: 40 A: KI KZ TD UZ",
+      "Harpalus rubripes Duftschmid, 1812: 77 (Carabus) E: AB AL AR AU BE BH BU BY CR CT CZ DE EN FI FR GB GE GG GR HU IR IT KZ LA LT LU MC MD NL NR NT PL PT RO SK SL SP ST SV SZ TR UK YU A: CY ES FE GAN IN KI KZ MG NE NIN QIN SCH SHA SHX SY TD TM TR UZ WS XIN NARİ",
+      "Harpalus smaragdinus Duftschmid, 1812: 78 {Carabus} [HN] E: AB AL AR AU BE BH BU BY CR CT CZ DE EN FI FR GB GE GG HU IT KZ LA LT LU MC MD NL NR NT PL RO SK SL SP ST SV SZ TR UK YU A: CY ES IN KI KZ TD TM TR UZ WS XIN",
+      "Harpalus tardus Panzer, 1796d: no. 24 {Carabus} E: AB AL AR AU BE BH BU BY CR CT CZ DE EN FI FR GB GE GG GR HU IR IT LA LT LU MC MD NL NR NT PL PT RO SK SL SP ST SV SZ TR UK YU A: IN TR UZ WS",
+      "Harpalus uniformis staudingeri Jedlička, 1953b: 112 A: KZ TD TM UZ",
+      "Harpalus vereschaginae Kataev, 1988: 770 A: TM UZ",
+      "Harpalus calceatus Duftschmid, 1812: 81 {Carabus} E: AB AR AU BE BH BU BY CR CT CZ DE EN FI FR GB GE GG GR HU IT KZ LA LT LU MC MD NL NR PL PT RO SK SL SP ST SV SZ TR UK YU A: AF ES FE HEB JA KI KZ LIA MG NC SC SCH SHA SHX TD TM TR UZ WS XIN YUN",
+      "Harpalus rufipes DeGeer, 1774: 96 {Carabus} E: AB AL AR AU AZ BE BH BU BY CR CT CZ DE EN FI FR GB GE GG GR HU IR IT KZ LA LS LT LU MA MC MD NL NR MT PL PT RO SK SL SP ST SV SZ TR UK YU N: AG MO TU A: AF CY ES IN IQ KI KZ TD TM TR UZ WS XIN NARİ"
+    ],
+    '49': [
+      "Microderes brachypus Steven, 1809: 39 (Carabus) E: AB AR KZ ST UK A: IN IQ KI KZ MG TD TR UZ XIN",
+      "Microderes undulatus Gebler, 1841a: 371 (Ophonus) A: IQ KZ TD TM UZ",
+      "Microderes diversopunctatus diversopunctatus Solsky, 1874: 76 (Pangus) A: TM (Kugitangtau Khrebet) UZ (Gissarskiy Khrebet; Zeravshanskiy Khrebet)",
+      "Microderes diversopunctatus heterostictus Tschitschérine, 1898e: 171 (Neopangus) A: KI KZ (Karatau; Talasskiy Khrebet) UZ (Chatkalskiy Khrebet; Turkestanskiy Khrebet)",
+      "Microderes intermittens Solsky, 1874: 75 (Pangus) A: TD (Gissarskiy Khrebet) TM (Kugitangtau Khrebet) UZ (Zeravshanskiy Khrebet; Gissarskiy Khrebet)",
+      "Microderes namanganensis Heyden, 1885b: 285 (Pangus) A: KI KZ (Tien Shan) UZ",
+      "Microderes subtilis Tschitschérine, 1898e: 172 (Neopangus) A: UZ (Nuratau Khrebet)",
+      "Microderes laschketensis Jedlička, 1958d: 227 (Harpalus) A: TD UZ (Tien Shan)"
+    ],
+    '50': [
+      "Ophonus azureus Fabricius, 1775: 224 {Carabus) E: AB AL AN AR AU BE BH BU BY CR CT CZ DE FR GB GE GG GR HU IT KZ LA LU MC MD NL NT PL RO SK SL SP ST SV SZ TR UK YU N: AG A: IN IQ KI KZ TD TM TR UZ WS XIN",
+      "Ophonus chlorizans Solsky, 1874: 78 A: AF KA KI KZ PA TD TM UZ XIN",
+      "Ophonus convexicollis Ménétriés, 1832: 130 E: AB AR BU GG MD ST UK A: IN KI SY TM TR UZ",
+      "Ophonus hystrix dissors Tschitschérine, 1895b: 235 A: KI KZ UZ"
+    ],
+    '51': [
+      "Acupalpm elegans Dejean, 1829a: 412 (Stenolophus) E: AB AL AR AU BU CR CT CZ FR GB GE GG GR HU IT MA MC MD NL PL PT RO SK SL SP ST TR UK YU N: AG CI EG LB MO TU A: AF CY IN IQ IS JO KI KZ LE TD TM TR UZ WS",
+      "Acupalpm flaviceps Motschulsky, 1850a: 23 (Stenolophus) E: ST A: AF IN KI KZ MG NMO TD TM UZ XIN",
+      "Acupalpm maculatus Schaum, 1860c: 619 (Stenolophus) E: AB AL AR AU BH BU CR CZ FR GE GG GR HU IT MA MC MD PL PT SK SL SP ST SZ TR UK YU N: AG CI LB MO TU A: AF CY IN IS JO KZ SY TM TR UZ",
+      "Acupalpm parvulus Sturm, 1825: 77 (Trechus) E: AB AR AU BE BH BU BY CR CT CZ DE EN FI FR GB GE GG GR HU IR IT LA LT LU MC MD NL NR NT PL PT RO SK SL SP ST SV SZ UK YU A: AF ES IN KI KZ TD TM TR UZ WS"
+    ],
+    '52': [
+      "Anthracus consputus Duftschmid, 1812: 148 (Carabus) E: AB AU BE BH BU BY CR CT CZ DE EN FI FR GB GE GG GR HU IR IT LA LT LU MC MD NL NT PL RO SK SL SP ST SV UK YU N: MO A: IN KZ TM TR UZ WS"
+    ],
+    '53': [
+      "Dicheirotrichus microderus Solsky, 1874: 72 E: AB AR A: AF KI KZ TD TM UZ",
+      "Dicheirotrichus ustulatus Dejean, 1829a: 235 {Harpalus) E: AB AR KZ MD RO ST UK A: KZ MG TD TM UZ WS XIN",
+      "Dicheirotrichus discicollis Dejean, 1829a: 436 {Acupalpus) E: BU RO ST UK A: KI KZ MG TD TM UZ",
+      "Dicheirotrichus discolorpunctidorsis Reitter, 1899d: 459 {Trichocellus) A: AF KI KZ TD TM UZ XIN",
+      "Dicheirotrichus hauseri Reitter, 1894a: 37 {Trichocellus) A: KI TD TM UZ",
+      "Dicheirotrichus obscuricollis Reitter, 1899d: 454 {Trichocellus) A: AF KI KZ TD TM UZ",
+      "Dicheirotrichus tschitscherini Reitter, 1899d: 458 {Trichocellus) A: TD TM UZ"
+    ],
+    '54': [
+      "Idiomelas nigripes Reitter, 1894a: 35 {Stenolophus) E: ST A: HEN KI KZ MG NMO TD TM UZ XIN minor Tschitschérine, 1900e: 364"
+    ],
+    '55': [
+      "Loxoncus procerus Schaum, 1858a: 274 (Stenolophus) E: AB AL BU GR IT (Sardegna) ST TR N: AG A: AF IN IS KZ SY TM TR UZ Mesopotamia"
+    ],
+    '56': [
+      "Stenolophus marginatus Dejean, 1829a: 427 E: AB AL AR BH BU CR FR GG GR IT MC PT SP TR UK YU N: AG CI EG MO MR TU A: AF CY IN IQ IS JO KI KZ SA SY TD TM TR UZ",
+      "Stenolophus abdominalispersicus Mannerheim, 1844b: 432 E: AB AR BU CR GG GR HU IT MC MD RO ST UK YU A: AF IN IQ IS KI KZ SY PA TD TM TR UZ",
+      "Stenolophus discophoms Fischer von Waldheim, 1823: pi. 26 (Ophonus) E: AB AL AR AU BE BH BU BY CR CT CZ FR GG GR HU IT KZ MC MD NT PL RO SK SL SZ TR UK YU A: IN IQ KI KZ TR UZ WS",
+      "Stenolophus mixtus Herbst, 1784: 143 (Cambus) E: AB AL AR AU BE BH BU BY CR CT CZ DE EN FI FR GB GE GG GR HU IR IT KZ LA LT LU MC MD NL NR NT PL PT RO SK SL SP ST SV SZ UK YU N: AG MO A: ES FE KI KZ TR UZ WS",
+      "Stenolophus proximus Dejean, 1829a: 420 E: AB AL AR BH BU CR FR GG GR HU IT MD PT RO SP ST TR UK N: MO TU A: AF IN IS KI KZ SY TR UZ",
+      "Stenolophus skrimshiranus Stephens, 1828a: 166 E: AB AL AU BE BH BU BY CR CZ DE FR GB GE GG GR HU IT LU MD NL PL RO SK SL SP ST SV SZ TR UK N: AG MO TU A: CY SY TR UZ Palestine"
+    ],
+    '57': [
+      "Agatus amoenulus Semenov, 1889d: 400 {Glycia) A: KZ TM UZ",
+      "Agatus bicolor Solsky, 1874: 35 {Glycia) A: AF KI KZ TD TM UZ",
+      "Agatus cingulatus Gebler, 1843: 37 {Dromius) E: ST A: AF IN IQ IS KI KZ TD TM UZ",
+      "Agatus flavipes Solsky, 1874: 35 {Glycia) A: AF IN KI KZ TD TM UZ"
+    ],
+    '58': [
+      "Glycia spencei Gistel, 1838: 123 (Cymindis) E: AB AR GR SP N: AG EG TU A: AF CY IN IQ IS KZ PA SA TD TM TR UZ YE"
+    ],
+    '59': [
+      "Merizomena dimidiata Ménétriés, 1848: 19 (Glycia) A: KZ UZ",
+      "Merizomena tricolor Gebler, 1845: 99 (Cymindis) A: KI KZ UZ",
+      "Merizomena tschitscherini Semenov, 1900f: 681 (Glycia) A: AF KI KZ TD UZ"
+    ],
+    '60': [
+      "Platytarus faminii faminii Dejean, 1826: 447 (Cymindis) E: AB AR FR GR IT PT SP N: AG CI EG LB MO TU A: CY IQ IS KI KZ SA SY TM TR UZ AFR"
+    ],
+    '61': [
+      "Cymindis accentifera Zoubkoff, 1833: 313 A: AF IN KI KZ TD TM UZ",
+      "Cymindis pictapicta Pallas, 1771: 465 (Carabus) E: AB AR ST UK A: AF IN KI KZ TD TM TR UZ WS XIN",
+      "Cymindis quadrisignata Ménétriés, 1848: 21 A: AF KI KZ TD UZ",
+      "Cymindis arnoldii Kabak, 1999: 434 A: UZ",
+      "Cymindis cordicollis V.E. Jakovlev, 1887a: 152 A: KZ UZ",
+      "Cymindis triangularis Reitter, 1897e: 247 A: KZ UZ",
+      "Cymindis impressa Reitter, 1893b: 66 A: KI KZ TD UZ",
+      "Cymindis antonowi Semenov, 1891: 294 A: KZ TD TM UZ",
+      "Cymindis arcana Emetz, 1972: 326 A: KZ (Ugam Valley) UZ (Pskem Valley)",
+      "Cymindis fedtschenkoi Tschitschérine, 1896b: 257 A: KI KZ UZ",
+      "Cymindis gurjevae Kabak, 1999: 446 A: UZ (W Tien Shan: Pskem)",
+      "Cymindis mannerheimi Gebler, 1843: 36 A: AF KA KI KZ PA TD UZ XIN",
+      "Cymindis minuta kuraminensis Kabak, 1997b: 102 A: UZ (Kuraminskyi Khrebet)",
+      "Cymindis minuta minuta Kabak & Wrase, 1997: 100 A: KI UZ (W of Tshatkal; W of Koeksu Mt. Ranges)",
+      "Cymindis olegiana Kabak, 1999: 444 A: UZ (W of Ghissar Khrebet)",
+      "Cymindis reitteri Liebke, 1927a: 104 [RN] A: UZ (W Tien Shan)",
+      "Cymindis rufescens Gebler, 1845: 98 A: KI TD UZ",
+      "Cymindis simplex Zoubkoff, 1833: 312 A: AF KI KZ TM UZ",
+      "Cymindis solskyi Tschitschérine, 1896b: 256 A: TD UZ",
+      "Cymindis sewertzowi Tschitschérine, 1896b: 257 A: KZ UZ"
+    ],
+    '62': [
+      "Microlestes corticalis L. Dufour, 1820b: 322 {Lebia) E: AL AU BH BU CR FR GR HU IT MA RO SK SP ST UK N: AG CI EG MO MR TU A: AF IN IQ IS KI KZ TD TM TR SA SY UZ WS",
+      "Microlestes fissuralis Reitter, 1901f: 376 {Blechrus) E: AL AU BH BU CZ FR GR HU IT MC MD SK SP ST YU A: IN KI KZ LE SY TM TR UZ",
+      "Microlestes gracilicornis gracilicornis Holdhaus, 1912: 492 E: MD UK A: IN KI KZ TU UZ",
+      "Microlestes luctuosus luctuosus Holdhaus, 1904b: 330 E: AR AB BH BU FR GR IT PT SP UK YU N: EG A: CY IN IS KI KZ TD TR SY UZ",
+      "Microlestes minutulus Goeze, 1777: 665 (Carabus) E: AB AR AU BH BU BY CT CZ DE EN FI FR GE HU IT MC MD NL NT PL SK SP ST SV UK A: ES FE IS JA KI KZ TM UZ WS",
+      "Microlestes politulus Reitter, 1901f: 377 (Blechrus) E: AR A: IN KI KZ TM UZ",
+      "Microlestes syriacus Brisout de Barneville, 1885: cii (Blechrus) A: IN IQ IS JO PA SY TM TR UZ",
+      "Microlestes tenuis Mateu, 1984c: 906 A: TM UZ"
+    ],
+    '63': [
+      "Microlestes notatus Stephens, 1827: 24 (Dromius) E: AB AU BH BU BY CT CZ DE EN FI FR GB GE HU IR IT LA LS MD NL NR PL RO SK SP ST SV UK YU A: KI KZ LE TR UZ"
+    ],
+    '64': [
+      "Daer ales Semenov & Znojko, 1929b: 185 A: KZ (W Tien Shan) UZ"
+    ],
+    '65': [
+      "Lebia chrysis Reitter, 1892a: 27 A: KI KZ UZ",
+      "Lebia cyanocephala cyanocephala Linné, 1758: 415 (Carabus) E: AL AR AB BU BH BU BY CT CZ DE EN FI FR GB GE GG GR HU IT LA LT MC MD NL NR PL PT SK SP ST SV TR UK YU N: AG TU A: AF CY IN IQ IS KI KZ PA SY TR UZ WS XIN",
+      "Lebia festivafestiva Faldermann, 1836a: 11 E: AB AR BU GR MC A: IN KI KZ PA TD TM TR UZ",
+      "Lebia punctata Gebler, 1843: 37 A: KI KZ MG TR UZ WS",
+      "Lebia balteata Heyden, 1886b: 178 A: KI TD UZ",
+      "Lebia holomera Chaudoir, 1871c: 165 E: ST A: CY KI KZ TM UZ",
+      "Lebia menetriesi Ballion, 1869: 217 [RN] E: ST A: KZ TM UZ WS",
+      "Lebia scapularis scapularis Geoffroy, 1785: 50 (Buprestis) E: AB AR AU BH BU FR GB GR HU IT MD PL PT RO SK SP ST UK YU N: AG MO TU A: IN KI KZ TD TM TR UZ",
+      "Lebia trimaculata Villers, 1789: 383 (Carabus) E: AU BH BU FR GG GR HU IT MC MD PT RO SK SP ST SZ UK N: AG MO TU A: CY KI KZ SY TM TR UZ",
+      "Lebia turkestanica Jedlička, 1966c: 241 E: ST A: AF IN KI KZ MG PA TD TM UZ"
+    ],
+    '66': [
+      "Apristus reticulatus Schaum, 1857a: 132 E: AB BU GR IT A: IN KI TR UZ"
+    ],
+    '67': [
+      "Metablus solskyi Komarov, 1995: 5 A: KI KZ TM UZ"
+    ],
+    '68': [
+      "Syntomus fuscomaculatus Motschulsky, 1844: 59 (Dromius) E: AB AR FR GG GR IT PT SP ST N: AG CI EG MO MR TU A: AF BT CY HP IN IQ IS KI KZ LE MG PA SY TM TR UP UZ ORR",
+      "Syntomus pallipes Dejean, 1825: 246 (Dromius) E: AB AR AU BH BU CZ GE GG GR HU IT MC MD NL PL RO SK SP ST UK YU N: AG MO TU A: ES FE IS KZ MG NC NE TR UZ"
+    ],
+    '69': [
+      "Diplocheila transcaspica Semenov, 1891: 278 (Rembus) A: AF IN TM UZ"
+    ],
+    '70': [
+      "Badister bullatus Schrank, 1798: 623 {Carabus) E: AU BE BH BU BY CR CT CZ DE EN FI FR GB GE GG HU IT LA LT LU NL NR PL RO SK SL ST SV SZ TR UK YU A: IN IQ KZ TR UZ WS",
+      "Badister fenestratus Semenov, 1906a: 4 A: ES KI KZ UZ",
+      "Badister unipustulatus Bonelli, 1813: 443 E: AL AR AU AZ BE BH BU BY CT CZ DE EN FI FR GB GE GG GR HU IT LA LT MA MD NL PL RO SK SL SP ST SV SZ UK YU A: KZ TR UZ WS",
+      "Badister collaris Motschulsky, 1844: 142 E: AR AU AZ BH BU BY CR CT CZ DE FR GB GE GG HU IT MC PT SK SP ST SV SZ UK YU N: MO A: IN IQ IS KZ LE SY TR UZ WS"
+    ],
+    '71': [
+      "Licinus depressus Paykull, 1790: 34 {Carabus) E: AU BE BH BU BY CR CT CZ DE EN FI FR GE GB GG HU IT LA LT MD NL NR NT RO SK SL SP ST SZ UK A: ES KI KZ UZ WS"
+    ],
+    '72': [
+      "Panagaeus relictus Semenov & Bogachev, 1938: 99 A: TD TM UZ"
+    ],
+    '73': [
+      "Agonum chalconotum Ménétriés, 1832: 118 E: GB LA A: AF ΚΙ KZ MG TD TR UZ ΧΙΝ",
+      "Agonum viridicupreum tschitscherini Semenov, 1894: 526 (Anchomenus) A: AF UZ"
+    ],
+    '74': [
+      "Anchomenus dorsalis Pontoppidan, 1763: 678 {Carabus) E: AB AU BE BH BU CR CT CZ DE EN FI FR GB GE GRHUIRIT LA LS LT MA MD NL NT PL PT SK SL SP ST SV SZ UK YU N: MO A: AF ES FE JO KZ IN IQ SY TM TR UZ WS"
+    ],
+    '75': [
+      "Platynus ferghanicus Belousov, 1991b: 76 (Agonum) A: UZ",
+      'Platynus willbergi Reitter, 1891d: 233 A: UZ'
+    ],
+    '76': [
+      "Poecilus nitens nitens Chaudoir, 1850b: 134 (Feronia) E: AR ST A: KZ TD TM UZ",
+      "Poecilus peregrinus Tschitschérine, 1898a: 200 (Feronia) A: UZ XIN",
+      "Poecilus innatus Glasunov, 1909: 266 {Platysma) A: KZ UZ",
+      "Poecilus akinini Tschitschérine, 1887a: 240 A: KZ UZ",
+      "Poecilus cupreus cupreus Linné, 1758: 416 (Carabus) E: AB AL AR AU BE BH BU BY CT CZ DE EN FI FR GB GE GG GR HU IR IT KZ LA LS LT MD NL NR NT PL RO SK SP ST SV SZ TR UK YU A: ES KI KZ SY TD TM TR UZ WS",
+      "Poecilus liosomus Chaudoir, 1876a: 7 A: KI KZ TD TM UZ",
+      "Poecilus longiventris Solsky, 1874: 91 A: AF KI KZ TD UZ",
+      "Poecilus punctulatus Schaller, 1783: 318 (Carabus) E: AU BE BU BY CT CZ DE EN FR GE HU IT KZ LA LT MD NL NT PL SK ST SV SZ UK A: KZ UZ WS",
+      "Poecilus turkestanicus Reitter, 1891b: 35 A: UZ",
+      "Poecilus carbonicolor carbonicolor Solsky, 1874: 94 A: UZ",
+      "Poecilus grombczewskyi Tschitschérine, 1890a: 144 {Feronia) A: UZ",
+      "Poecilus janthinipennis janthinipennis Solsky, 1874: 92 A: KI UZ",
+      "Poecilus kraatzii Heyden, 1882b: 311 {Derus) A: TD UZ",
+      "Poecilus leptoderus leptoderus Solsky, 1874: 94 A: UZ",
+      "Poecilus pseudopurpurascens Kirschenhofer, 1987a: 46 {Pterostichus) A: UZ",
+      "Poecilus rostowtzowi Tschitschérine, 1899d: 318 {Feronia) A: TD UZ",
+      "Poecilus tschitscherini Semenov, 1891: 275 {Pterostichus) A: TD UZ"
+    ],
+    '77': [
+      "Pterostichus vernalis Panzer, 1796a: no. 17 (Carabus) E: AB AU AZ BE BH BU BY CR CT CZ DE EN FI FR GB GE GR HU IR IT LA LT MD NL NR NT PL PT RO SK SL SP ST SV SZ TR UK YU N: AG MO A: ES KZ TR UZ WS NARİ",
+      "Pterostichus sodalicius Heyden, 1885b: 286 A: UZ",
+      "Pterostichus dostali Kirschenhofer, 1981a: 137 A: UZ",
+      "Pterostichus strenuus Panzer, 1796e: no. 6 (Carabus) E: AL AU BE BH BU BY CT CZ DE EN FI FR GB GE GR HU IR IT LA LT MD NL NR NT PL RO SK SL SP ST SV SZ UK YU A: ES FE KZ TR UZ WS NARİ",
+      "Pterostichus stricticollis Solsky, 1874: 97 {Argutor) A: UZ",
+      "Pterostichus subitus Csiki, 1930: 644 [RN] A: UZ",
+      "Pterostichus cordaticollis Heyden, 1884b: 221 A: TD UZ",
+      "Pterostichus glasunowi Tschitschérine, 1893b: 474 (Feronia) A: UZ",
+      "Pterostichus niger niger Schaller, 1783: 315 (Carabus) [NP] E: AB AU BE BH BU BY CR CT CZ DE EN FI FR GB GE GR HU IR IT LA LS LT MC MD NL NR NT PL RO SK SL SP ST SV SZ TR UK YU A: IN KI KZ TD TR UZ WS",
+      "Pterostichus nigrita Paykull, 1790: 129 (Carabus) E: AU BE BH BU BY CR CT CZ DE EN FI FR GB GE GR HU IC IR IT LA LS LT MD NL NR NT PL PT RO SK SL SP ST SV SZ TR UK YU N: AG MO TU A: CH ES FE JA KZ MG SY TR UZ WS"
+    ],
+    '78': [
+      "Platyderus haberhaueri Heyden, 1889a: 326 A: TD UZ"
+    ],
+    '79': [
+      "Calathus ambiguus ambiguus VykaW, 1790:130 {Carabus) E: AB AL AR AU BE BH BU BY CR CZ DE EN FI FR GB GE GR HU IT LA LT LU MC MD NL NR PL RO RU SK SL SP ST SV SZ UK YU A: AF IN IS KZ SY TD TM TR UZ WS",
+      "Calathus peltatus Kolenati, 1845: 42 E: AB AR ST A: TD TM UZ"
+    ],
+    '80': [
+      "Dolichus halensis Schaller, 1783: 317 (Carabus) E: AU BU BY CR CT CZ DE FR GE GR HU IT LT MD NL PL RO SK SP ST SV SZ TR UK YU A: ES FE JA KZ NC SC TR UZ WS"
+    ],
+    '81': [
+      "Eremosphodrus dvorshaki Casale & Vereschagina, 1986: 168 A: KZ TD TM UZ"
+    ],
+    '82': [
+      "Laemostenus extensus Heyden, 1884b: 220 (Antisphodrus) A: UZ",
+      "Laemostenus Icuraminensis Vereschagina & Kabak, 1997: 857 A: UZ",
+      "Laemostenus tacitus ledouxianus Deuve, 1993e: 86 A: UZ",
+      "Laemostenus tacitus tacitus Dvořák, 1982: 274 (Antisphodrus) A: UZ",
+      "Laemostenus visai Dvořák, 1982: 276 (Antisphodrus) A: UZ",
+      "Laemostenus ferghanicus Vereschagina & Kabak, 1997: 861 A: UZ",
+      "Laemostenus turkestanicus Semenov, 1891: 271 A: TD UZ",
+      "Laemostenus leptoderus Reitter, 1892b: 67 (Antisphodrus) A: UZ"
+    ],
+    '83': [
+      "Pseudotaphoxenus dignus Vereschagina, 1988: 27 {Taphoxenus) A: KI TD UZ",
+      "Pseudotaphoxenus ferghanensis Vereschagina & Kabak, 1996: 133 A: KI TD UZ",
+      "Pseudotaphoxenus humilis Casale, 1988: 151 A: UZ",
+      "Pseudotaphoxenus juvencus bucharicus Jedlička, 1961d: 205 {Taphoxenus) A: TD (Hissar) UZ (Buchara)",
+      "Pseudotaphoxenus juvencus juvencus Ballion, 1871: 328 {Sphodrus) A: KI TD (Hissar) UZ (Tashkent, Samarkand)",
+      "Pseudotaphoxenus kraatzi Heyden, 1882b: 309 A: TD UZ",
+      "Pseudotaphoxenus michajlovi Vereschagina, 1988: 28 (Taphoxenus) A: UZ",
+      "Pseudotaphoxenus parvulus infans Lutshnik, 1930: 41 (Taphoxenus) A: KI UZ",
+      "Pseudotaphoxenus punctibasis Jedlička, 1952b: 87 (Taphoxenus) A: UZ",
+      "Pseudotaphoxenus substriatus Ballion, 1871: 328 (Sphodrus) A: KI TD UZ",
+      "Pseudotaphoxenus taschkensis Jedlička, 1952b: 87 (Taphoxenus) A: UZ",
+      "Pseudotaphoxenus thoracicus Gebler, 1843: 37 (Sphodrus) E: AB A: KI KZ UZ"
+    ],
+    '84': [
+      "Taphoxenus gigas Fischer von Waldheim, 1823: pi. 36 {Sphodrus) E: ST UK A: ES GAN KI KZ MG UZ"
+    ],
+    '85': [
+      "Synuchus vivalis simplex Semenov, 1891: 267 A: NC UZ",
+      "Synuchus vivalis vivalis Illiger, 1798: 197 (Carabus) E: AL AR AU BE BH BU BY CR CT CZ DE EN FI FR GB GE HU IR IT LA LT LU NL NR NT PL PT SK SL SP ST SV SZ TR UK YU A: IS KZ TR UZ WS"
+    ],
+    '86': [
+      "Amara aenea DeGeer, 1774: 98 (Carabus) E: AB AL AN AR AU AZ BE BH BU BY CR CT CZ DE EN FI FR GB GE GG GR HU IR IT KZ LA LS LT MD NL NR NT PL PT RO SK SL SP ST SV SZ TR UK YU N: AG CI EG LB MO MR TU A: AF CY ES HP IN IQ IS JO KA KI KZ LE MG NP PA SY TD TM TR UP UZ WS XIN AFR NAR",
+      "Amara bamidunyae Bates, 1878c: 716 A: AF ES HP IN KA KI KZ MG NP PA TD TM UP UZ WS XIN XIZ",
+      "Amara communis Panzer, 1797b: no. 2 {Carabus) E: AN AR AU BE BH BU BY CR CT CZ DE EN FI FR GB GE GG GR HU IC IR IT LA LT LU MC MD NL NR NT PL RO SK SL SP ST SV SZ UK YU A: ES FE JA KI KZ MG NC UZ WS XIN Manchuria NAR",
+      "Amara familiaris Duftschmid, 1812:119 {Carabus) E: AB AL AN AR AU BE BH BU CT BY CZ DE EN FI FR GB GE GG GR HU IC IR IT KZ LA LS LT LU MC MD NL NR NT PL PT RO SK SL SP ST SV SZ TR UK YU A: BEI ES FE GAN HUB IN JA KA KI KZ MG NC QIN SCH SHA TD TM TR UZ WS XIN NAR",
+      "Amara littorea C.G. Thomson, 1857: 36 [NP] E: AB AR AU BH BU BY CR CT CZ DE EN FI FR GE GG HU IT KZ LA LT MD NR NT PL SK SL ST SV SZ UK YU A: ES IN KI KZ TD TR UZ WS",
+      "Amara ovata Fabricius, 1792: 154 (Carabus) E: AB AL AN AR AU BE BH BU BY CR CT CZ DE EN FI FR GB GE GG GR HU IR IT LA LS LT LU MC MD NL NR NT PL PT RO SK SL SP ST SV SZ UK YU A: BEI ES FE GAN HEI HUB IN JA KZ KI NC QIN SCH SHA SY TD TR TM UZ WS XIN XIZ YUN NAR ORR",
+      "Amara similata Gyllenhal, 1810: 138 {Harpalus) E: AB AR AU BE BH BU BY CR CT CZ DE EN FI FR GB GE GG GR HU IR IT LA LT LU MC MD NL NR NT PL PT RO SK SL SP ST SV SZ TR UK YU N: AG MO A: AF ES HP IN KA KI KZ MG PA SY TD TM UZ WS XIN",
+      "Amara abdominalis Motschulsky, 1844: 181 (Bradytus) E: AB AR CT GG KZ ST UK A: AF BEI ES GAN HEB IN KI KZ MG NMO QIN SCH SHA TD TR TM XIN WS UZ",
+      "Amara fedtschenkoi Tschitschérine, 1898c: 104 [RN] A: AF KZ TD TM UZ",
+      "Amara karalangana Hieke, 1996: 30 A: TD TM UZ",
+      "Amara rufescens rufescens Dejean, 1829a: 387 (Harpalus) E: AB AR GR N: EG A: AF IN IQ IS JO KU KZ LE SA SY TD TM TR UZ",
+      "Amara apricaria Paykull, 1790: 125 (Carabus) E: AB AL AN AR AU BE BH BU BY CR CT CZ DE EN FI FR GB GE GG GR HU IC IR IT LA LT LU MC MD NL NR NT PL PT RO SK SL SP ST SV SZ UK YU A: AF ES FE GAN HEI IN JA KA KI KZ MG NMO NC PA QIN TD TM TR UZ WS XIN XIZ NAR",
+      "Amara majuscula Chaudoir, 1850b: 148 {Bradytus) E: AU BE BU BY CT CZ DE EN FI FR GE HU LA LT NL NR NT PL RO SK SL ST SV SZ UK YU A: BEI ES FE GAN HEB HEI IN JA KI KZ LIA MG NMO NC QIN SCH TR UZ WS XIN",
+      "Amara abbreviata Chaudoir, 1842a: 828 {Celia) A: AF IN KA KI KZ PA TD TM UZ WS",
+      "Amara ambulans C. Zimmermann, 1832a: 22 E: AB AR GG RO CT ST UK A: AF GAN IN KZ MG TD TR TM UZ WS XIN",
+      "Amara bifrons Gyllenhal, 1810: 144 {Harpalus) [NP] E: AB AL AN AR AU BE BH BU BY CR CT CZ DE EN FI FR GB GE GG GR HU IR IT LA LT LU MC MD NL NR NT PL PT RO SK SL SP ST SV SZ TR UK YU A: CY ES IN KI KZ TD TR UZ WS XIN NAR",
+      "Amara fusgenua Hieke, 1999a: 166 A: IN KZ TD TM TR UZ XIN",
+      "Amara ingenua Duftschmid, 1812: 110 (Carabus) E: AB AR AU BE BH BU BY CR CT CZ DE GE EN FI FR GG GR IT HU LA LT MD MC NL NR NT PL RO SK SL SP ST SV SZ UK YU N: AG A: ES KI KZ TD TM TR UZ WS XIN",
+      "Amara municipalis municipalis Duftschmid, 1812: 113 (Carabus) E: AB AN AR AU BE BU BY CR CT CZ DE EN FI FR GE GG GR HU IT LA LT MD NR NT PL RO SK SP ST SV SZ UK YU A: ES FE KI KZ TD TM TR UZ WS XIN",
+      "Amara tartariae Bates, 1878c: 717 {Leiocnemis) A: KI KZ TD UZ XIN"
+    ],
+    '87': [
+      "Zabrus trinii trinii Fischer von Waldheim, 1817: 468 (Pelobatus) E: AB AR A: IN TM TR UZ",
+      "Zabrus morio morio Ménétriés, 1832: 125 E: AB AR GG A: IN PA SY TD TR UZ",
+    ],
+    '88': [
+      "Polistichus connexus Geoffrey, 1785: 55 {Buprestis) E: AR AU AZ BU CR CZ FR GB GE GG HU IT PL PT RO SK SP ST SZ YU N: AG MO TU A: ES KI KZ TK UZ WS"
+    ]
+
+  };
+
+  document.querySelectorAll('.section-dropdown-sub a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+
+      const genus = link.dataset.genus;
+      const infoContent = document.getElementById('info-content');
+      const list = speciesData[genus] || [];
+
+      if (list.length) {
+        infoContent.innerHTML = '<ul>' + list.map(item => `<li>${item}</li>`).join('') + '</ul>';
+      } else {
+        infoContent.textContent = 'Maʼlumot topilmadi.';
+      }
+
+      // 🔽 Sub-dropdownlarni yopish
+      document.querySelectorAll('.dropdown-sub').forEach(cb => cb.checked = false);
+      // 🔽 Asosiy dropdownni ham yopish (ixtiyoriy)
+      document.querySelectorAll('.dropdown').forEach(cb => cb.checked = false);
+    });
+  });
+</script>
+
+</body>
+</html>
