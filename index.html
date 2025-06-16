@@ -127,7 +127,7 @@ body {
   height: 100%;
   width: 100%;
   transition: all 200ms linear;
-  opacity: 0;
+  opacity: 1;
 }
 .dark-light:checked ~ .light-back{
   opacity: 1;
@@ -1207,6 +1207,7 @@ a .uil {
       document.querySelectorAll('.dropdown').forEach(cb => cb.checked = false);
     });
   });
+document.getElementById('dark-light').checked = true;
 </script>
 
 </body>
