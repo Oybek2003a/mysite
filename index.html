@@ -36,8 +36,14 @@ body {
   justify-content: center;
   padding-top: 100px;
   padding-bottom: 300px;
+  transition: all 0.3s ease;
 }
 
+/* ✅ Dark mode uchun */
+.dark-light:checked ~ body {
+  color: #fff;
+  background-color: #1f2029;
+}
 .sec-center {
   position: relative;
   max-width: 100%;
