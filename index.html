@@ -1219,28 +1219,35 @@ a .uil {
   const lightBack = document.querySelector('.light-back');
   const body = document.body;
 
+  const allTextElements = document.querySelectorAll(
+    'body, a, label, h1, h2, h3, h4, h5, h6, p, span, .info-box, .section-dropdown-sub, .for-dropdown-sub'
+  );
+
   function applyMode(isDark) {
+    // lightBack fonini yashirish yoki ko‘rsatish
     lightBack.style.opacity = isDark ? "0" : "1";
-    body.style.color = isDark ? "#fff" : "#000";
+
+    // body fon rangi
+    body.style.backgroundColor = isDark ? "#1f2029" : "#ffffff";
+
+    // matn rangini barcha tegishli elementlarga qo‘llash
+    allTextElements.forEach(el => {
+      el.style.color = isDark ? "#ffffff" : "#000000";
+    });
   }
 
-  // Tugmani bosganda ranglarni almashtirish
+  // Toggle tugmasi bosilganda rejimni o‘zgartirish
   toggle.addEventListener('change', () => {
     applyMode(toggle.checked);
   });
 
-  // Sahifa yuklanganda default oq (light) rejim
+  // Sahifa yuklanganda default oq rejimga o‘tkazish
   window.addEventListener('DOMContentLoaded', () => {
     toggle.checked = false;
     applyMode(false);
   });
-	const allTextElements = document.querySelectorAll('a, label, h2, .info-box, .section-dropdown-sub, .for-dropdown-sub');
-
-allTextElements.forEach(el => {
-  el.style.color = isDark ? '#ffeba7' : '#102770';
-});
-
 </script>
+
 
 </body>
 </html>
