@@ -89,7 +89,7 @@ body {
   opacity: 0;
 }
 .dark-light:checked + label:after {
-  opacity: 1;
+  opacity: 0;
 }
 .dark-light:checked + label:before,
 .dark-light:not(:checked) + label:before{
@@ -1204,22 +1204,7 @@ a .uil {
       // 🔽 Sub-dropdownlarni yopish
       document.querySelectorAll('.dropdown-sub').forEach(cb => cb.checked = false);
       // 🔽 Asosiy dropdownni ham yopish (ixtiyoriy)
-      document.querySelectorAll('.dropdown').forEach(cb => cb.checked = false);
-    });
-  });
-const toggle = document.getElementById('dark-light');
-const body = document.body;
-const lightBack = document.querySelector('.light-back');
 
-toggle.addEventListener('change', () => {
-  if (toggle.checked) {
-    body.classList.add('dark-mode');
-    lightBack.style.opacity = 0;
-  } else {
-    body.classList.remove('dark-mode');
-    lightBack.style.opacity = 1;
-  }
-});
 </script>
 
 </body>
