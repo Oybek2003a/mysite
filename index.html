@@ -1217,23 +1217,30 @@ a .uil {
 <script>
   const toggle = document.getElementById('dark-light');
   const lightBack = document.querySelector('.light-back');
+  const body = document.body;
 
-  // Bosilganda ranglarni boshqarish
+  function applyMode(isDark) {
+    lightBack.style.opacity = isDark ? "0" : "1";
+    body.style.color = isDark ? "#fff" : "#000";
+  }
+
+  // Tugmani bosganda ranglarni almashtirish
   toggle.addEventListener('change', () => {
-    if (toggle.checked) {
-      // Qoraga o‘tish: lightBack ko‘rinmaydi
-      lightBack.style.opacity = "0";
-    } else {
-      // Oqqa qaytish: lightBack ko‘rinadi
-      lightBack.style.opacity = "1";
-    }
+    applyMode(toggle.checked);
   });
 
-  // Sahifa yuklanganda default oq rejim bo‘lishi uchun:
+  // Sahifa yuklanganda default oq (light) rejim
   window.addEventListener('DOMContentLoaded', () => {
-    toggle.checked = false; // Oq rejim
-    lightBack.style.opacity = "1";
+    toggle.checked = false;
+    applyMode(false);
   });
+	const allTextElements = document.querySelectorAll('a, label, h2, .info-box, .section-dropdown-sub, .for-dropdown-sub');
+
+allTextElements.forEach(el => {
+  el.style.color = isDark ? '#fff' : '#000';
+});
+
 </script>
+
 </body>
 </html>
