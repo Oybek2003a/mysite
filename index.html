@@ -1199,7 +1199,7 @@ a .uil {
       const list = speciesData[genus] || [];
 
       if (list.length) {
-        infoContent.innerHTML = '<ul>' + list.map(item => <li>${item}</li>).join('') + '</ul>';
+        infoContent.innerHTML = '<ul>' + list.map(item => `<li>${item}</li>`).join('') + '</ul>';
       } else {
         infoContent.textContent = 'Maʼlumot topilmadi.';
       }
@@ -1214,6 +1214,26 @@ a .uil {
 
 
 </script>
+<script>
+  const toggle = document.getElementById('dark-light');
+  const lightBack = document.querySelector('.light-back');
 
+  // Bosilganda ranglarni boshqarish
+  toggle.addEventListener('change', () => {
+    if (toggle.checked) {
+      // Qoraga o‘tish: lightBack ko‘rinmaydi
+      lightBack.style.opacity = "0";
+    } else {
+      // Oqqa qaytish: lightBack ko‘rinadi
+      lightBack.style.opacity = "1";
+    }
+  });
+
+  // Sahifa yuklanganda default oq rejim bo‘lishi uchun:
+  window.addEventListener('DOMContentLoaded', () => {
+    toggle.checked = false; // Oq rejim
+    lightBack.style.opacity = "1";
+  });
+</script>
 </body>
 </html>
