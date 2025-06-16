@@ -1210,6 +1210,22 @@ a .uil {
       document.querySelectorAll('.dropdown').forEach(cb => cb.checked = false);
     });
   });
+	  <script>
+const toggle = document.getElementById('dark-light');
+const body = document.body;
+const lightBack = document.querySelector('.light-back');
+
+toggle.addEventListener('change', () => {
+  if (toggle.checked) {
+    body.classList.add('dark-mode');
+    lightBack.style.opacity = 0;
+  } else {
+    body.classList.remove('dark-mode');
+    lightBack.style.opacity = 1;
+  }
+});
+</script>
+
 </script>
 
 </body>
