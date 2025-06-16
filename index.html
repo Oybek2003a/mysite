@@ -19,30 +19,27 @@
   box-sizing: border-box;
   
 }
-body {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 1.4;
-  color: #000;
-  background-color: #fff;
+body{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 1.4;
+	color: #fff;
+	background-color: #1f2029;
+	overflow-x: hidden;
   background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg');
   background-position: center;
   background-repeat: repeat;
   background-size: 4%;
   width: 100%;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -ms-flex-pack: center;
   justify-content: center;
   padding-top: 100px;
   padding-bottom: 300px;
-  transition: all 0.3s ease;
-}
-
-/* ✅ Dark mode uchun */
-.dark-light:checked ~ body {
-  color: #fff;
-  background-color: #1f2029;
 }
 .sec-center {
   position: relative;
@@ -95,7 +92,7 @@ body {
   opacity: 0;
 }
 .dark-light:checked + label:after {
-  opacity: 0;
+  opacity: 1;
 }
 .dark-light:checked + label:before,
 .dark-light:not(:checked) + label:before{
@@ -133,10 +130,10 @@ body {
   height: 100%;
   width: 100%;
   transition: all 200ms linear;
-  opacity: 1;
+  opacity: 0;
 }
 .dark-light:checked ~ .light-back{
-  opacity: 0;
+  opacity: 1;
 }
 .dropdown:checked + label,
 .dropdown:not(:checked) + label{
@@ -1202,7 +1199,7 @@ a .uil {
       const list = speciesData[genus] || [];
 
       if (list.length) {
-        infoContent.innerHTML = '<ul>' + list.map(item => `<li>${item}</li>`).join('') + '</ul>';
+        infoContent.innerHTML = '<ul>' + list.map(item => <li>${item}</li>).join('') + '</ul>';
       } else {
         infoContent.textContent = 'Maʼlumot topilmadi.';
       }
@@ -1210,7 +1207,9 @@ a .uil {
       // 🔽 Sub-dropdownlarni yopish
       document.querySelectorAll('.dropdown-sub').forEach(cb => cb.checked = false);
       // 🔽 Asosiy dropdownni ham yopish (ixtiyoriy)
-
+      document.querySelectorAll('.dropdown').forEach(cb => cb.checked = false);
+    });
+  });
 </script>
 
 </body>
