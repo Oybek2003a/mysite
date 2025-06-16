@@ -1211,25 +1211,6 @@ a .uil {
     });
   });
 
-  const toggle = document.getElementById('dark-light');
-  const lightBack = document.querySelector('.light-back');
-
-  // Bosilganda ranglarni boshqarish
-  toggle.addEventListener('change', () => {
-    if (toggle.checked) {
-      // Qoraga o‘tish: lightBack ko‘rinmaydi
-      lightBack.style.opacity = "0";
-    } else {
-      // Oqqa qaytish: lightBack ko‘rinadi
-      lightBack.style.opacity = "1";
-    }
-  });
-
-  // Sahifa yuklanganda default oq rejim bo‘lishi uchun:
-  window.addEventListener('DOMContentLoaded', () => {
-    toggle.checked = false; // Oq rejim
-    lightBack.style.opacity = "1";
-  });
 
 
 </script>
