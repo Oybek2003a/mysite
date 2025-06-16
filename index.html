@@ -1215,46 +1215,8 @@ a .uil {
 
 </script>
 <script>
-  const toggle = document.getElementById('dark-light');
-  const lightBack = document.querySelector('.light-back');
-  const body = document.body;
-
-  const allTextElements = document.querySelectorAll(
-    'body, a, label, h1, h2, h3, h4, h5, h6, p, span, .info-box, .section-dropdown-sub, .for-dropdown-sub'
-  );
-
-  const allBoxElements = document.querySelectorAll(
-    '.info-box, .section-dropdown-sub, .for-dropdown-sub, .dropdown, .dropdown-content'
-  );
-
-  function applyMode(isDark) {
-    // lightBack fonini boshqarish
-    lightBack.style.opacity = isDark ? "0" : "1";
-
-    // body fon rangi
-    body.style.backgroundColor = isDark ? "#1f2029" : "#ffffff";
-
-    // matn ranglari
-    allTextElements.forEach(el => {
-      el.style.color = isDark ? "#ffeba7" : "#102770";
-    });
-
-    // dropdown fon ranglari (yashirin qismlar va info boxlar)
-    allBoxElements.forEach(el => {
-      el.style.backgroundColor = isDark ? "#2c2d3f" : "#f2f2f2";
-      el.style.borderColor = isDark ? "#444" : "#ccc";
-    });
-  }
-
-  // Tugmani bosganda rejimni o‘zgartirish
-  toggle.addEventListener('change', () => {
-    applyMode(toggle.checked);
-  });
-
-  // Default light rejimni yuklash
   window.addEventListener('DOMContentLoaded', () => {
-    toggle.checked = false;
-    applyMode(false);
+    document.getElementById('dark-light').checked = true;
   });
 </script>
 
